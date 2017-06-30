@@ -27,7 +27,8 @@
     margin: 28,
     backDrop: false,
     useSourceScope: false,
-    containerElement: 'body'
+    containerElement: 'body',
+    scrolling: false,
   }).controller('TourController', [
     '$scope',
     'orderedList',
@@ -338,7 +339,9 @@
               tourtip.css(ttPosition);
               // Scroll to the tour tip
               var ttPositionTop = parseInt(ttPosition.top), ttPositionLeft = parseInt(ttPosition.left);
-              scrollTo(tourtip, scope.ttContainerElement, -150, -300, tourConfig.scrollSpeed, ttPositionTop, ttPositionLeft);
+              if(tourConfig.scrolling){
+                scrollTo(tourtip, scope.ttContainerElement, -150, -300, tourConfig.scrollSpeed, ttPositionTop, ttPositionLeft);
+              }
             };
             if (tourConfig.backDrop)
               focusActiveElement(targetElement);
